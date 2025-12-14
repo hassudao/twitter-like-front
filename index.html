@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <title>Twitter Like App</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+</head>
+<body>
+  <h1>🏠 タイムライン</h1>
+  <div id="timeline"></div>
+
+  <script>
+    fetch('https://twitter-like-api.vercel.app/api/post/list')
+      .then(res => res.json())
+      .then(posts => {
+        const tl = document.getElementById('timeline');
+        posts.forEach(p => {
+          const div = document.createElement('div');
+          div.innerHTML = `
+            <hr>
+            <p>${p.text}</p>
+            <small>${p.created_at}</small>
+          `;
+          tl.appendChild(div);
+        });
+      });
+  </script>
+</body>
+</html>
