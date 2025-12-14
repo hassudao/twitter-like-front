@@ -17,7 +17,7 @@
   const API_URL = 'https://twitter-like-api.vercel.app/api/post';
 
   function loadTimeline() {
-    fetch(`${API_URL}/list`)
+    fetch(`https://twitter-like-api.vercel.app/api/post/list`)
       .then(res => res.json())
       .then(posts => {
         const tl = document.getElementById('timeline');
