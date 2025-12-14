@@ -14,7 +14,7 @@
   <div id="timeline"></div>
 
 <script>
-  const API_URL = 'https://twitter-like-api.vercel.app/api/post';
+  const API_URL = 'https://あなたのVercelのURL/api/post';
 
   function loadTimeline() {
     fetch(`${API_URL}/list`)
@@ -36,18 +36,17 @@
 
   document.getElementById('postBtn').onclick = () => {
     const text = document.getElementById('text').value;
-fetch(`${API_URL}/create`, {
-  method: 'POST',   // ← ここ超重要‼️
-  headers: {
-    'Content-Type': 'application/json'
-  },
-  body: JSON.stringify({
-    user_id: 'test-user-id',
-    text: text,
-    image_urls: []
-  })
-});
 
+    fetch(`${API_URL}/create`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        user_id: 'test-user-id',
+        text: text,
+        image_urls: []
+      })
     }).then(() => {
       document.getElementById('text').value = '';
       loadTimeline();
@@ -56,5 +55,6 @@ fetch(`${API_URL}/create`, {
 
   loadTimeline();
 </script>
+
 </body>
 </html>
